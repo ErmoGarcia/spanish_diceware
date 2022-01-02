@@ -1,19 +1,16 @@
-import Head from 'next/head'
-import Welcome from '../components/welcome'
+import Layout from '../components/layout'
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-primary">
-      <Head>
-        <title>Diceware</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <h1 className="text-6xl font-bold text-secondary">
+        Welcome to <span className="text-alternative">Diceware</span>
+      </h1>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-
-        <Welcome />
-
-      </main>
-    </div>
+      <div className="p-5 mt-20 min-w-[15rem] action-button">
+        <p className="text-4xl font-semibold"><Link href="#">Start</Link></p>
+      </div>
+    </Layout>
   )
 }

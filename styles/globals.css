@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a:focus {
+    outline: none;
+}
+
+@layer components {
+
+    .action-button {
+        @apply border-4 rounded-full border-alternative drop-shadow-md
+        transition ease-in-out duration-500 hover:scale-110 focus-within:scale-110
+        text-secondary hover:text-primary-900 hover:bg-alternative 
+        focus-within:text-primary-900 focus-within:bg-alternative 
+        cursor-pointer;
+    }
+}
