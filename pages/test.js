@@ -1,19 +1,15 @@
-import { getPassphrase } from 'diceware-tk';
-import { useEffect, useState } from 'react';
+import { readWordlist } from "diceware-tk";
+import Passphrase from "../components/passphrase";
 
-export default function Test() {
-    const [passphrase, setPassphrase] = useState('');
+export async function getServerSideProps(context) {
+    const wordlist = await readWordlist('https://theworld.com/~reinhold/diceware_espanol/DW-Espanol-1.txt')
+    return {
+        props: { wordlist: wordlist }, // will be passed to the page component as props
+    }
+}
 
-    useEffect(() => {
-        const generatePassphrase = async () => {
-            const phrase = await getPassphrase()
-            setPassphrase(phrase)
-        }
-
-        generatePassphrase()
-    }, [])
-
+export default function Test(props) {
     return (
-        <div>Passphrase: {passphrase}</div>
+        <Passphrase wordlist={props.wordlist}/>
     )
 }
